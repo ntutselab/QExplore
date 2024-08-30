@@ -56,6 +56,8 @@ class webEnv:
             xtags = self.website.find_elements(By.TAG_NAME, x)
             if xtags != []:
                 for element in xtags:
+                    if not element.is_displayed():
+                        continue
                     s = x+"!@!"
                     if x == 'input':
                         try:
