@@ -641,7 +641,13 @@ def main():
 # In[8]:
 
 if __name__ == "__main__":
+    # record the start time
+    start_time = time.time()
     main()
+    # record the end time
+    end_time = time.time()
+    # print the execution time
+    print(f"Execution time: {end_time - start_time} seconds")
 
 
 # In[ ]:
