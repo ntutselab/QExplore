@@ -138,7 +138,9 @@ class webEnv:
         att = []
         hreflist = []
         XPATH = ""
-        if name != 'nan':
+        if name != 'nan' and tag == 'button':
+            att.append('@id='+'"'+name+'"')
+        elif name != 'nan':
             att.append('@name='+'"'+name+'"')
         if value != 'nan':
             att.append('@value='+'"'+value+'"')
