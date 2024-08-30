@@ -81,8 +81,11 @@ class webEnv:
                         s+='nan'
                         
                     elif x=='button':
-                        s+='nan!@!' #name
                         try:
+                            if element.get_attribute('id') != '' and element.get_attribute('id') != None:
+                                s+=element.get_attribute('id').strip()+'!@!'
+                            else:
+                                s+='nan!@!'
                             if element.get_attribute('value') != '' and element.get_attribute('value') != None:
                                 s+=element.get_attribute('value').strip()+'!@!'
                             else:
