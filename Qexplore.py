@@ -436,7 +436,7 @@ def makeGraph(stateMap,output):
 
 def q_learning(env, num_episodes,sleep=0,matrix=None,statemap=None,_epsilon=0.2,
                onlyperform=False,output="./Q_Result",timebound=True,activity_time=None,
-              login_urls=[],username="",password="",depth=100):
+              login_urls=[],username="",email="",password="",depth=100):
     global CLOSE
     #stats = EpisodeStats(
     #    episode_lengths=np.zeros(num_episodes),
@@ -520,7 +520,7 @@ def q_learning(env, num_episodes,sleep=0,matrix=None,statemap=None,_epsilon=0.2,
             if elem is not None:
                 curl = env.website.current_url
                 status, done = env.step(elem, login_url=login_urls,
-                                       username=username, password=password,
+                                       username=username, email=email, password=password,
                                        depth=depth)
                 if status:
                     urlbefore = curl
@@ -608,6 +608,7 @@ def main():
     parser.add_argument("--url", help="The home page url of the website")
     parser.add_argument("--login_urls", help="The login page url of the website, add comma incase of multiple")
     parser.add_argument("--username", help="The username")
+    parser.add_argument("--email", help="The email")
     parser.add_argument("--password", help="The password")
     parser.add_argument("--baseurl", help="The base url to check for out of scope websites(without Tailing /), Default is same as home url")
     parser.add_argument("--action_wait", help="Action weight time in seconds, default is 0.5", default=0.5, type=float)
@@ -634,7 +635,7 @@ def main():
     #stats,matrix,stateMap=q_learning(env, 2,timebound=True,activity_time=60)
     stats,matrix,stateMap=q_learning(env, args.episodes,timebound=args.timebound,activity_time=args.activity_time,
                                     matrix=args.matrix,statemap=args.stateMap,
-                                    login_urls=login_urls,username=args.username,password=args.password,depth=args.depth)
+                                    login_urls=login_urls,username=args.username,email=args.email,password=args.password,depth=args.depth)
 
 
 # In[8]:
